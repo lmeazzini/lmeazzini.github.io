@@ -271,12 +271,9 @@ def predict(network, x):
 ### Testing the Network
 
 Let's test the network trying to classify data that is not in the training set. For this, we will use numbers drawn in a slightly different way.
-3:      7:     8:
- @@@@   @@@@@   @@@
-   @@      @   @   @
- @@@@     @    @@@@@
-   @@    @     @   @
- @@@@   @       @@@  
+
+
+<img src="examples.png" alt="Drawing" style="width: 350;"/>
 
 ```python
 # Testing with a different 3
