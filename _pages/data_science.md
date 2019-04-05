@@ -4,5 +4,5 @@ permalink: /data-science/
 layout: tags
 author_profile: true
 header:
-  image: "/images/zakim.jpg"
+  image: "/images/projects_wallpaper.jpg"
 ---
