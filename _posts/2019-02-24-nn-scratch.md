@@ -272,8 +272,7 @@ def predict(network, x):
 
 Let's test the network trying to classify data that is not in the training set. For this, we will use numbers drawn in a slightly different way.
 
-
-<img src="examples.png" alt="Drawing" style="width: 350;"/>
+<img src="{{ site.url }}{{ site.baseurl }}/images/nn-scratch/examples.png" alt="input examples" style="width: 350px;">
 
 ```python
 # Testing with a different 3
