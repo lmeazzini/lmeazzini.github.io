@@ -19,7 +19,7 @@ locale                   : "en-US"
 title                    : "Luis Meazzini"
 title_separator          : "-"
 name                     : "Luis Meazzini"
-description              : "MSc. in Computer Science, Data Scientist and Philosophy enthusiast"
+description              : "Data Science Portfolio"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "Luis Meazzini"
   avatar           : /images/profile.jpg
-  bio              : "Data Science Portfolio"
+  bio              : "MSc. in Computer Science, Data Scientist and Philosophy enthusiast"
   location         : "Itajubá - MG, Brazil"
   email            :
   links:
