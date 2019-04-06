@@ -1,4 +1,10 @@
 ---
+title: "Neural Transfer Style"
+classes: wide
+date: 2019-02-18
+tags: [Neural Netwoks, Style Transfer]
+excerpt: "Neural Netwoks, Data Science, Tutorial"
+mathjax: "true"
 header:
   image: "/images/style-transfer/praiaRaio.png"
 ---
@@ -6,7 +12,7 @@ header:
 
 Before carrying out a style transfer process, let's make it clear that in fact this is.
 
-Style transfer is a ** process of modifying the style of an image and at the same time preserving its content **. The article that defines this whole process can be seen at https://arxiv.org/pdf/1508.06576.pdf.
+Style transfer is a **process of modifying the style of an image and at the same time preserving its content**. The article that defines this whole process can be seen at https://arxiv.org/pdf/1508.06576.pdf.
 
 A simple example can be seen in the figure below. (ref: https://www.techleer.com/articles/466-insight-into-fast-style-transfer-in-tensorflow/)
 
