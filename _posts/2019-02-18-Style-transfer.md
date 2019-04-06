@@ -1,5 +1,4 @@
 ---
-title: "Neural Transfer Style"
 classes: wide
 date: 2019-02-18
 tags: [Neural Netwoks, Style Transfer]
