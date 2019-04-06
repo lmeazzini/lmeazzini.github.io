@@ -1,6 +1,7 @@
-
-<img src="praiaRaio.png"/>
-
+---
+header:
+  image: "/images/style-transfer/praiaRaio.png"
+---
 # Neural Style Transfer
 
 Before carrying out a style transfer process, let's make it clear that in fact this is.
@@ -9,7 +10,7 @@ Style transfer is a ** process of modifying the style of an image and at the sam
 
 A simple example can be seen in the figure below. (ref: https://www.techleer.com/articles/466-insight-into-fast-style-transfer-in-tensorflow/)
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/ex1.jpg" alt="style transfer example" style="width: 450px;">
+<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/ex1.jpg" alt="style transfer example" style="width: 800px;">
 
 
 Equations: https://arxiv.org/pdf/1508.06576.pdf
@@ -101,7 +102,7 @@ img_estilo_arr = img_estilo_arr[:, :, :, ::-1] # Troca RGB por BGR
 
 We will use a pre-trained Convolutional Neural Network (CNN) model, the VGG-16. This model is the right choice for image processing. In addition, it allows us to separately extract the content and style of an image, and that is exactly what we want. Then, we will pass the two images through the VGG and initialize the image to be generated in a random image.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/vgg16.png" alt="vgg architecture" style="width: 450px;">
+<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/vgg16.png" alt="vgg architecture" style="width: 800px;">
 
 Keep in mind that we will not use fully-connected layers (blue) and softmax (yellow). They act like a classifier that we do not need here. Let's use only feature pullers, ie convolutional layers (black) and MaxPooling (red). In this model, the information is important and, using MaxPooling on CNN, we are throwing out a large number of pixel values from the previous layer and we are keeping only the highest values.
 
@@ -170,14 +171,15 @@ model.summary()
 ## The problem to be solved
 
 The problem to be solved for style transfer is an optimization problem. To do this, we must minimize three functions:
-  - Cost of content (distance between input and output images);
-  - Style cost (distance between style and output images);
-  - Cost of total variation (regularization - spatial smoothness to minimize the output image).
+
+* Cost of content (distance between input and output images);
+* Style cost (distance between style and output images);
+* Cost of total variation (regularization - spatial smoothness to minimize the output image).
 
 
 ### Cost of content
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/content_loss.png" alt="equation content loss" style="width: 300px;">
+<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/content_loss.png" alt="equation content loss" style="width: 1000px;">
 
 
 ```python
@@ -199,11 +201,11 @@ custo += peso_conteudo * custo_conteudo(camada_conteudo_caracteristicas, caracte
 
 For the calculation of the cost of style, it is necessary to calculate the Gram matrix:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/gram.png" alt="equation gram matrix" style="width: 300px;">
+<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/gram.png" alt="equation gram matrix" style="width: 1000px;">
 
 And then, the definition of the style cost:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/E_loss.png" alt="equation style cost" style="width: 300px;">
+<img src="{{ site.url }}{{ site.baseurl }}/images/style-transfer/E_loss.png" alt="equation style cost" style="width: 1000px;">
 
 
 ```python
@@ -240,8 +242,6 @@ def custo_variacao_total(x):
 
 custo += variacao_peso * custo_variacao_total(imagem_combinada)
 ```
-
-## Otimização
 
 ## Optimization
 
