@@ -1,6 +1,7 @@
 ---
 classes: wide
-date: 2019-02-18
+date: 2019-02-12
+title: "Fifa 2017 Player position Classifiers"
 tags: [Exploratory Analysis, Classifiers]
 excerpt: "Exploratory Analysis, Classifiers, Tutorial"
 mathjax: "true"
@@ -472,9 +473,9 @@ print(X_test['body_type'].unique())
     ['Stocky' 'Normal' 'Lean' 'Courtois']
     ['Normal' 'Stocky' 'Lean' 'Akinfenwa' 'Neymar']
 
-Courtois -> Lean
-Akinfenwa -> Stocky
-Neymar -> Lean
+- Courtois -> Lean
+- Akinfenwa -> Stocky
+- Neymar -> Lean
 
 ```python
 # Changing strange body types
