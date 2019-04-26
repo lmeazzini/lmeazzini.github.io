@@ -2,7 +2,7 @@
 title: "Exploratory analysis on suicide data"
 classes: wide
 date: 2019-04-23
-tags: [Expolore analysis, Data Science]
+tags: [Expolory analysis, Data Science]
 excerpt: "Expolore analysis, Data Science"
 mathjax: "true"
 ---
