@@ -1,3 +1,10 @@
+title: "Exploratory analysis on suicide data"
+classes: wide
+date: 2019-04-23
+tags: [Expolore analysis, Data Science]
+excerpt: "Expolore analysis, Data Science"
+mathjax: "true"
+---
 
 # Suicide analysis
 
@@ -329,15 +336,9 @@ In this case, the 'gdp_for_year' field is as a string, so let's convert this to 
 ```python
 for i, x in enumerate(df['gdp_for_year']):
     df['gdp_for_year'][i] = x.replace(',', '')
-    
+
 df['gdp_for_year'] = df['gdp_for_year'].astype('int64')
 ```
-
-    /home/luis/anaconda3/envs/dl/lib/python3.6/site-packages/ipykernel_launcher.py:2: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-      
 
 
 ## Data Description
@@ -396,7 +397,7 @@ Then I categorized each country in the data set into first, second and third wor
 
 ```python
 Frist_world = ['United States', 'Germany', 'Japan', 'Turkey', 'United Kingdom', 'France', 'Italy', 'South Korea',
-              'Spain', 'Canada', 'Australia', 'Netherlands', 'Belgium', 'Greece', 'Portugal', 
+              'Spain', 'Canada', 'Australia', 'Netherlands', 'Belgium', 'Greece', 'Portugal',
               'Sweden', 'Austria', 'Switzerland', 'Israel', 'Singapore', 'Denmark', 'Finland', 'Norway', 'Ireland',
               'New Zeland', 'Slovenia', 'Estonia', 'Cyprus', 'Luxembourg', 'Iceland']
 
@@ -410,7 +411,7 @@ Second_world = ['Russian Federation', 'Ukraine', 'Poland', 'Uzbekistan', 'Romani
 ```python
 country_world = []
 for i in range(len(df)):
-    
+
     if df['country'][i] in Frist_world:
         country_world.append('1')
     elif df['country'][i] in Second_world:
@@ -447,13 +448,10 @@ sns.barplot(x = top_year, y = top_suicides)
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff84c16d1d0>
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_25_1.png" alt="" style="width: 500px;">
 
 
 
-![png](output_25_1.png)
 
 
 #### Age
@@ -470,14 +468,7 @@ sns.barplot(x = df['age'].unique(), y = suicides_no_age)
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff84c18ce48>
-
-
-
-
-![png](output_27_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_27_1.png" alt="" style="width: 500px;">
 
 
 #### Sex
@@ -499,9 +490,7 @@ sns.barplot(x = df['sex'].unique(), y = suicides_no_sex)
 
 
 
-
-![png](output_29_1.png)
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_29_1.png" alt="" style="width: 500px;">
 
 
 ```python
@@ -509,15 +498,7 @@ sns.catplot(x='sex', y='suicides_no',col='age', data=df, estimator=np.median,hei
 ```
 
 
-
-
-    <seaborn.axisgrid.FacetGrid at 0x7ff87d66b2b0>
-
-
-
-
-![png](output_30_1.png)
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_30_1.png" alt="" style="width: 500px;">
 
 #### Country
 
@@ -528,7 +509,7 @@ Countries with larger populations should have more suicides.
 suicides_no_pais = []
 for c in df['country'].unique():
     suicides_no_pais.append(sum(df[df['country'] == c]['suicides_no']))
-    
+
 n_suicides_pais = pd.DataFrame(suicides_no_pais, columns=['suicides_no_pais'])
 n_suicides_pais['country'] = df['country'].unique()
 
@@ -540,14 +521,7 @@ sns.barplot(x = top_suicides, y = top_paises)
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff849d02630>
-
-
-
-
-![png](output_32_1.png)
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_32_1.png" alt="" style="width: 500px;">
 
 By using the amount of suicides per 100k inhabitants, we remove the bias of overpopulated countries.
 
@@ -556,7 +530,7 @@ By using the amount of suicides per 100k inhabitants, we remove the bias of over
 suicides_no_pais = []
 for c in df['country'].unique():
     suicides_no_pais.append(sum(df[df['country'] == c]['suicides/100k pop']))
-    
+
 n_suicides_pais = pd.DataFrame(suicides_no_pais, columns=['suicides_no_pais/100k'])
 n_suicides_pais['country'] = df['country'].unique()
 
@@ -567,14 +541,7 @@ sns.barplot(x = top_suicides, y = top_paises)
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff849aaf278>
-
-
-
-
-![png](output_34_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_34_1.png" alt="" style="width: 500px;">
 
 
 #### Generation
@@ -590,15 +557,7 @@ sns.barplot(x = df['generation'].unique(), y = suicides_no_gen)
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff849a49898>
-
-
-
-
-![png](output_36_1.png)
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_36_1.png" alt="" style="width: 500px;">
 
 #### Country world
 
@@ -607,39 +566,26 @@ sns.barplot(x = df['generation'].unique(), y = suicides_no_gen)
 suicides_no_world = []
 for w in df['country_world'].unique():
     suicides_no_world.append(sum(df[df['country_world'] == w]['suicides_no']))
-    
+
 sns.barplot(x = df['country_world'].unique(), y = suicides_no_world)
 ```
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff83c5b96d8>
-
-
-
-
-![png](output_38_1.png)
-
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_38_1.png" alt="" style="width: 500px;">
 
 
 ```python
 suicides_no_world = []
 for w in df['country_world'].unique():
     suicides_no_world.append(sum(df[df['country_world'] == w]['suicides/100k pop']))
-    
+
 sns.barplot(x = df['country_world'].unique(), y = suicides_no_world)
 ```
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8468ef978>
-
-
-
-
-![png](output_39_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_39_1.png" alt="" style="width: 500px;">
 
 
 #### GDP for year
@@ -650,14 +596,7 @@ sns.scatterplot(x = 'gdp_for_year', y = 'suicides_no', data = df)
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8498e2cc0>
-
-
-
-
-![png](output_41_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_41_1.png" alt="" style="width: 500px;">
 
 
 #### GDP por capita
@@ -669,13 +608,7 @@ sns.scatterplot(x = 'gdp_per_capita', y = 'suicides_no', data = df)
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8498d43c8>
-
-
-
-
-![png](output_43_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_43_1.png" alt="" style="width: 500px;">
 
 
 ### Attribute Correlation
@@ -689,12 +622,7 @@ sns.heatmap(df.corr(), cmap = 'coolwarm', annot=True)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff84982d7b8>
-
-
-
-
-![png](output_45_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_45_1.png" alt="" style="width: 500px;">
 
 
 # Checking the suicidade/100k distribution of some countries
@@ -711,12 +639,7 @@ sns.boxplot(x = 'suicides/100k pop', y = 'country', data = df_filtred)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff833580780>
-
-
-
-
-![png](output_47_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_47_1.png" alt="" style="width: 500px;">
 
 
 ### General Plot of the World
@@ -724,13 +647,13 @@ sns.boxplot(x = 'suicides/100k pop', y = 'country', data = df_filtred)
 
 ```python
 import plotly.plotly as py
-import plotly.graph_objs as go 
+import plotly.graph_objs as go
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 ```
 
 
 ```python
-init_notebook_mode(connected=True) 
+init_notebook_mode(connected=True)
 ```
 
 
@@ -796,7 +719,7 @@ iplot(choromap)
 
 <div id="0190bb3c-9166-471e-9b5b-450853a0d06a" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";
 if (document.getElementById("0190bb3c-9166-471e-9b5b-450853a0d06a")) {
-    Plotly.newPlot("0190bb3c-9166-471e-9b5b-450853a0d06a", [{"colorbar": {"title": {"text": "n\u00famero de suic\u00eddios"}}, "locations": ["ALB", "ATG", "ARG", "ARM", "ABW", "AUS", "AUT", "AZE", "BHM", "BHR", "BRB", "BLR", "BEL", "BLZ", "BIH", "BRA", "BGR", "CPV", "CAN", "CHL", "COL", "CRI", "HRV", "CUB", "CYP", "CZE", "DNK", "DMA", "ECU", "SLV", "EST", "FJI", "FIN", "FRA", "GEO", "DEU", "GRC", "GRD", "GTM", "GUY", "HUN", "ISL", "IRL", "ISR", "ITA", "JAM", "JPN", "KAZ", "KIR", "KWT", "KGZ", "LVA", "LTU", "LUX", "MAC", "MDV", "MLT", "MUS", "MEX", "MNG", "MNE", "NLD", "NZL", "NIC", "NOR", "OMN", "PAN", "PRY", "PHL", "POL", "PRT", "PRI", "QAT", "KOR", "ROU", "RUS", "KNA", "LCA", "VC", "SMR", "SRB", "SYC", "SGP", "SVK", "SVN", "ZAF", "ESP", "LKA", "SUR", "SWE", "CHE", "THA", "TTO", "TUR", "TKM", "UKR", "ARE", "GBR", "USA", "URY", "UZB"], "text": ["Albania", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Barbados", "Belarus", "Belgium", "Belize", "Bosnia and Herzegovina", "Brazil", "Bulgaria", "Cabo Verde", "Canada", "Chile", "Colombia", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Dominica", "Ecuador", "El Salvador", "Estonia", "Fiji", "Finland", "France", "Georgia", "Germany", "Greece", "Grenada", "Guatemala", "Guyana", "Hungary", "Iceland", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kazakhstan", "Kiribati", "Kuwait", "Kyrgyzstan", "Latvia", "Lithuania", "Luxembourg", "Macau", "Maldives", "Malta", "Mauritius", "Mexico", "Mongolia", "Montenegro", "Netherlands", "New Zealand", "Nicaragua", "Norway", "Oman", "Panama", "Paraguay", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of Korea", "Romania", "Russian Federation", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and Grenadines", "San Marino", "Serbia", "Seychelles", "Singapore", "Slovakia", "Slovenia", "South Africa", "Spain", "Sri Lanka", "Suriname", "Sweden", "Switzerland", "Thailand", "Trinidad and Tobago", "Turkey", "Turkmenistan", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan"], "z": [924.7599999999999, 179.14, 3894.589999999997, 976.2100000000002, 1596.5199999999998, 4677.410000000004, 9076.229999999998, 356.2400000000002, 344.28000000000003, 467.24000000000007, 891.1300000000002, 7831.129999999998, 7900.500000000004, 2093.490000000001, 110.81, 2174.7200000000003, 7016.080000000007, 133.84, 4338.7199999999975, 3921.6400000000012, 2009.39, 2553.719999999998, 5982.84, 6111.9500000000035, 586.2599999999999, 5952.9899999999925, 3721.6499999999965, 0.0, 2345.209999999999, 3035.940000000002, 6873.780000000001, 673.8600000000001, 7924.11, 7803.250000000002, 1116.379999999999, 4854.689999999999, 1512.1199999999997, 660.9999999999999, 1146.6999999999996, 6655.919999999999, 10156.069999999994, 4889.74, 3881.7299999999987, 3329.969999999999, 3168.87, 106.44, 8025.229999999999, 9519.519999999995, 878.5100000000002, 355.9300000000001, 4457.300000000004, 7373.350000000004, 10588.879999999997, 6156.559999999995, 171.74000000000004, 164.08, 1872.0099999999995, 4464.579999999998, 1751.1899999999998, 184.39, 1194.0299999999997, 4066.5199999999973, 5008.320000000005, 472.82000000000005, 4658.760000000001, 26.5, 1744.059999999999, 1366.3700000000006, 435.83000000000004, 4397.620000000002, 3673.36, 3789.279999999998, 318.1499999999998, 9350.449999999995, 4171.550000000001, 11305.130000000006, 0.0, 2420.1200000000013, 1726.6299999999999, 145.62, 4787.450000000001, 1615.7000000000003, 6340.979999999998, 3318.1599999999994, 7012.619999999997, 231.48999999999998, 3509.0600000000013, 4658.959999999998, 7162.319999999997, 5247.719999999996, 4794.070000000002, 2362.67, 4479.509999999996, 199.17000000000004, 2994.730000000001, 8931.659999999993, 94.88999999999997, 2790.919999999999, 5140.970000000001, 6538.96, 2138.1700000000005], "type": "choropleth", "uid": "a40fc06b-c401-44b1-a316-dfc88cf7fc24"}], {"geo": {"projection": {"type": "equirectangular"}, "showframe": false}, "title": {"text": "Mapa de calor de suic\u00eddios 1985-2016"}}, {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly"}); 
+    Plotly.newPlot("0190bb3c-9166-471e-9b5b-450853a0d06a", [{"colorbar": {"title": {"text": "n\u00famero de suic\u00eddios"}}, "locations": ["ALB", "ATG", "ARG", "ARM", "ABW", "AUS", "AUT", "AZE", "BHM", "BHR", "BRB", "BLR", "BEL", "BLZ", "BIH", "BRA", "BGR", "CPV", "CAN", "CHL", "COL", "CRI", "HRV", "CUB", "CYP", "CZE", "DNK", "DMA", "ECU", "SLV", "EST", "FJI", "FIN", "FRA", "GEO", "DEU", "GRC", "GRD", "GTM", "GUY", "HUN", "ISL", "IRL", "ISR", "ITA", "JAM", "JPN", "KAZ", "KIR", "KWT", "KGZ", "LVA", "LTU", "LUX", "MAC", "MDV", "MLT", "MUS", "MEX", "MNG", "MNE", "NLD", "NZL", "NIC", "NOR", "OMN", "PAN", "PRY", "PHL", "POL", "PRT", "PRI", "QAT", "KOR", "ROU", "RUS", "KNA", "LCA", "VC", "SMR", "SRB", "SYC", "SGP", "SVK", "SVN", "ZAF", "ESP", "LKA", "SUR", "SWE", "CHE", "THA", "TTO", "TUR", "TKM", "UKR", "ARE", "GBR", "USA", "URY", "UZB"], "text": ["Albania", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Barbados", "Belarus", "Belgium", "Belize", "Bosnia and Herzegovina", "Brazil", "Bulgaria", "Cabo Verde", "Canada", "Chile", "Colombia", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Dominica", "Ecuador", "El Salvador", "Estonia", "Fiji", "Finland", "France", "Georgia", "Germany", "Greece", "Grenada", "Guatemala", "Guyana", "Hungary", "Iceland", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Kazakhstan", "Kiribati", "Kuwait", "Kyrgyzstan", "Latvia", "Lithuania", "Luxembourg", "Macau", "Maldives", "Malta", "Mauritius", "Mexico", "Mongolia", "Montenegro", "Netherlands", "New Zealand", "Nicaragua", "Norway", "Oman", "Panama", "Paraguay", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of Korea", "Romania", "Russian Federation", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and Grenadines", "San Marino", "Serbia", "Seychelles", "Singapore", "Slovakia", "Slovenia", "South Africa", "Spain", "Sri Lanka", "Suriname", "Sweden", "Switzerland", "Thailand", "Trinidad and Tobago", "Turkey", "Turkmenistan", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan"], "z": [924.7599999999999, 179.14, 3894.589999999997, 976.2100000000002, 1596.5199999999998, 4677.410000000004, 9076.229999999998, 356.2400000000002, 344.28000000000003, 467.24000000000007, 891.1300000000002, 7831.129999999998, 7900.500000000004, 2093.490000000001, 110.81, 2174.7200000000003, 7016.080000000007, 133.84, 4338.7199999999975, 3921.6400000000012, 2009.39, 2553.719999999998, 5982.84, 6111.9500000000035, 586.2599999999999, 5952.9899999999925, 3721.6499999999965, 0.0, 2345.209999999999, 3035.940000000002, 6873.780000000001, 673.8600000000001, 7924.11, 7803.250000000002, 1116.379999999999, 4854.689999999999, 1512.1199999999997, 660.9999999999999, 1146.6999999999996, 6655.919999999999, 10156.069999999994, 4889.74, 3881.7299999999987, 3329.969999999999, 3168.87, 106.44, 8025.229999999999, 9519.519999999995, 878.5100000000002, 355.9300000000001, 4457.300000000004, 7373.350000000004, 10588.879999999997, 6156.559999999995, 171.74000000000004, 164.08, 1872.0099999999995, 4464.579999999998, 1751.1899999999998, 184.39, 1194.0299999999997, 4066.5199999999973, 5008.320000000005, 472.82000000000005, 4658.760000000001, 26.5, 1744.059999999999, 1366.3700000000006, 435.83000000000004, 4397.620000000002, 3673.36, 3789.279999999998, 318.1499999999998, 9350.449999999995, 4171.550000000001, 11305.130000000006, 0.0, 2420.1200000000013, 1726.6299999999999, 145.62, 4787.450000000001, 1615.7000000000003, 6340.979999999998, 3318.1599999999994, 7012.619999999997, 231.48999999999998, 3509.0600000000013, 4658.959999999998, 7162.319999999997, 5247.719999999996, 4794.070000000002, 2362.67, 4479.509999999996, 199.17000000000004, 2994.730000000001, 8931.659999999993, 94.88999999999997, 2790.919999999999, 5140.970000000001, 6538.96, 2138.1700000000005], "type": "choropleth", "uid": "a40fc06b-c401-44b1-a316-dfc88cf7fc24"}], {"geo": {"projection": {"type": "equirectangular"}, "showframe": false}, "title": {"text": "Mapa de calor de suic\u00eddios 1985-2016"}}, {"showLink": false, "linkText": "Export to plot.ly", "plotlyServerURL": "https://plot.ly"});
 }
 });</script><script type="text/javascript">window.addEventListener("resize", function(){if (document.getElementById("0190bb3c-9166-471e-9b5b-450853a0d06a")) {window._Plotly.Plots.resize(document.getElementById("0190bb3c-9166-471e-9b5b-450853a0d06a"));};})</script>
 
@@ -816,14 +739,6 @@ Country and country fields are all the same, then discarded.
 ```python
 df_brasil.drop(['country', 'country_world'], axis = 1, inplace = True)
 ```
-
-    /home/luis/anaconda3/envs/dl/lib/python3.6/site-packages/pandas/core/frame.py:3940: SettingWithCopyWarning:
-    
-    
-    A value is trying to be set on a copy of a slice from a DataFrame
-    
-    See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
-    
 
 
 I'm going to repeat a lot of the graphics already done.
@@ -847,14 +762,7 @@ sns.barplot(x = top_year, y = top_suicides)
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff848cb4e10>
-
-
-
-
-![png](output_61_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_61_1.png" alt="" style="width: 500px;">
 
 
 
@@ -869,14 +777,7 @@ sns.barplot(x = df_brasil['age'].unique(), y = suicides_no_age)
 ```
 
 
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8473727f0>
-
-
-
-
-![png](output_62_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_62_1.png" alt="" style="width: 500px;">
 
 
 
@@ -892,12 +793,7 @@ sns.barplot(x = df_brasil['sex'].unique(), y = suicides_no_sex)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8472f21d0>
-
-
-
-
-![png](output_63_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_63_1.png" alt="" style="width: 500px;">
 
 
 
@@ -913,12 +809,7 @@ sns.barplot(x = df_brasil['generation'].unique(), y = suicides_no_gen)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8472ace48>
-
-
-
-
-![png](output_64_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_64_1.png" alt="" style="width: 500px;">
 
 
 
@@ -929,12 +820,7 @@ sns.scatterplot(x = 'gdp_for_year', y = 'suicides_no', data = df_brasil)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff84722e780>
-
-
-
-
-![png](output_65_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_65_1.png" alt="" style="width: 500px;">
 
 
 
@@ -944,13 +830,7 @@ sns.scatterplot(x = 'gdp_per_capita', y = 'suicides_no', data = df_brasil)
 
 
 
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff847194128>
-
-
-
-
-![png](output_66_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_66_1.png" alt="" style="width: 500px;">
 
 
 
@@ -962,12 +842,7 @@ sns.heatmap(df_brasil.corr(), cmap = 'coolwarm', annot=True)
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x7ff8471e62e8>
-
-
-
-
-![png](output_67_1.png)
+<img src="{{ site.url }}{{ site.baseurl }}/images/suicidios/output_67_1.png" alt="" style="width: 500px;">
 
 
 
