@@ -1,3 +1,4 @@
+---
 title: "Exploratory analysis on suicide data"
 classes: wide
 date: 2019-04-23
