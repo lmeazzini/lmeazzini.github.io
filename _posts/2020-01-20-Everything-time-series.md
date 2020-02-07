@@ -83,7 +83,9 @@ Usually, more recent data tends to be more important for the model. There are tw
 
 - *Expandable Window*: It means that as time passes, our training data will increase. The figure below can illustrate this process very well.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/tscv.png" alt="Time Series Cross Validation" style="width: 400px;" class="center">
+<p align="center">
+<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/tscv.png" alt="Time Series Cross Validation" style="width: 400px;">
+</p>
 
 - *Sliding Window*: In this format, as well as in the calculation of the features, we will slide a fixed window, previously defined, by the data. The sliding window gives you more control over the data you are going to use, making your pipeline more robust when retraining. Even if you have many years of data, it doesn’t mean that you need to use everything to train the model.
 
@@ -95,7 +97,9 @@ One way that is gaining popularity is by cross-block validation. In general, res
 
 In the case of time series, as we want to preserve the structure, but simulate different scenarios, we need to take blocks of data without making a random mix, and these block can not have intersections between the cross-validation folds. The most important thing is that the lines that were generated together over time remain together. These can be seen in the figure below:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/blocktscv.png" alt="Blocking Time Series Cross Validation" style="width: 400px;" class="center">
+<p align="center">
+<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/blocktscv.png" alt="Blocking Time Series Cross Validation" style="width: 400px;">
+</p>
 
 # The Model
 
