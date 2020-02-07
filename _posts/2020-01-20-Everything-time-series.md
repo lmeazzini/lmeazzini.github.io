@@ -2,8 +2,8 @@
 title: "Everything you need to know about Time Series"
 classes: wide
 date: 2020-01-20
-tags: [Time Series, Data Science]
-excerpt: "Time Series, Data Science"
+tags: [Time Series, Data Science, Tutorial]
+excerpt: "Time Series, Data Science, Tutorial"
 mathjax: "true"
 ---
 
