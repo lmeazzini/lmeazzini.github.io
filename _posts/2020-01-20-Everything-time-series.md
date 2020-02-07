@@ -19,7 +19,7 @@ Everything I put in this guide can be used at any time scale. Keep in mind that:
 
 How do you know you are dealing with a time series? A time series is a series of data points indexed in time order. The most simple time series is something like this:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/simple-ts.png" alt="Simple time series" style="width: 200px;", class="center">
+<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/simple-ts.png" alt="Simple time series" style="width: 200px;" class="center">
 
 Where the elements are:
 - *Timestamp*: a mark of the moment in time when the event was registered. Its accuracy will depend on the measured event.
@@ -53,7 +53,7 @@ In this case, instead of creating a model for each series, we “stack” them a
 
 Imagine that we have a series of the stock price of 10 companies for a year, one record per day. Let’s concatenate all these series into one. Then we will have 10 companies x 365 days = 3650 lines. Each line of the “new series” will have the timestamp, the company identification and the sales value at that moment.
 
-#### Why do we want to do this?
+## _Why do we want to do this?_
 
 - *More data*: Machine learning models tend to work better with a larger amount of data. Instead of making models based on a few records (365 lines in our example), we will be making more lines, allowing the model to capture patterns more robustly.
 - *Complexity*: When it comes to production, monitoring models, keeping them running, it is much simpler to maintain just one model than 10. This reduces the complexity of our solution and avoids implementation errors.
@@ -65,7 +65,7 @@ When we are dealing with time series models, we can not make an incorrect valida
 
 In addition, the entire process is affected by time. Some more quickly, others more slowly, so we need to have an idea of how our model will act with the changes that will happen.
 
-#### You may be wondering: is the whole process really going to change over time?
+## _You may be wondering: is the whole process really going to change over time?_
 
 Even an image classifier must be affected, as the devices used to take pictures are always changing.
 
@@ -81,7 +81,7 @@ Usually, more recent data tends to be more important for the model. There are tw
 
 - *Expandable Window*: It means that as time passes, our training data will increase. The figure below can illustrate this process very well.
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/tscv.png" alt="Time Series Cross Validation" style="width: 400px;", class="center">
+<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/tscv.png" alt="Time Series Cross Validation" style="width: 400px;" class="center">
 
 - *Sliding Window*: In this format, as well as in the calculation of the features, we will slide a fixed window, previously defined, by the data. The sliding window gives you more control over the data you are going to use, making your pipeline more robust when retraining. Even if you have many years of data, it doesn’t mean that you need to use everything to train the model.
 
@@ -93,7 +93,7 @@ One way that is gaining popularity is by cross-block validation. In general, res
 
 In the case of time series, as we want to preserve the structure, but simulate different scenarios, we need to take blocks of data without making a random mix, and these block can not have intersections between the cross-validation folds. The most important thing is that the lines that were generated together over time remain together. These can be seen in the figure below:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/blocktscv.png" alt="Blocking Time Series Cross Validation" style="width: 400px;", class="center">
+<img src="{{ site.url }}{{ site.baseurl }}/images/everything-time-series/blocktscv.png" alt="Blocking Time Series Cross Validation" style="width: 400px;" class="center">
 
 # The Model
 
