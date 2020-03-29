@@ -5,7 +5,7 @@ tags: [Recommender System, Data Science]
 excerpt: "Recommender System, Data Science, Music"
 mathjax: "true"
 header:
-  image: "/images/style-transfer/youtube_logo.jpg"
+  image: "/images/youtube-recommender/youtube_logo.jpg"
 ---
 
 # Overview
