@@ -1,12 +1,13 @@
 ---
+title: "Building a Youtube Music Recommender: from sractch to deploy"
 classes: wide
 date: 2020-03-29
 tags: [Recommender System, Data Science]
 excerpt: "Recommender System, Data Science, Music"
 mathjax: "true"
-header:
-  image: "/images/youtube-recommender/youtube_logo.jpg"
 ---
+
+<img src="{{ site.url }}{{ site.baseurl }}/images/youtube-recommender/youtube_logo.jpg" alt="youtube logo" style="width: 1200px;">
 
 # Overview
 
