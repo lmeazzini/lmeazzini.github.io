@@ -1,5 +1,5 @@
 ---
-title: "Building a Youtube Music Recommender: from sractch to deploy"
+title: "Building a Youtube Music Recommender: from scratch to deploy"
 classes: wide
 date: 2020-03-29
 tags: [Recommender System, Data Science]
