@@ -23,7 +23,9 @@ One of the most common approach to find fraudulent transactions was randomly sel
 
 Then, we aim to leverage machine learning to detect and prevent frauds and make fraud fighters more efficient and effective. Comumly, there are the supervised and the unsupervised approach:
 
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/table.png" alt="learning supervision comparison" class="center" style="width: 650px;">
+</p>
 
 Also, these models can then be deployed to automatically identify new instances/cases of known fraud patterns/types in the future. Ideally the validation of this type of machine learning algorith sometimes need to be a temporal validation since fraud patterns can change over time, however to simplify this article, the validation will be simplified.
 
@@ -507,8 +509,9 @@ ax2.set_ylim(0, 320)
 plt.show()
 ```
 
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/fraud_amount.png" alt="fraud amount" class="center" style="width: 600px;">
-
+</p>
 
 The number of transactions is very different since there are much more normal transactions then frauds. We can just see the differences between the plots. Looking at them, we can see that most frauds happen on small transactions (-500$). However, the "Time" feature can be very informative, on the plots below we can see that most frauds happen at ~2AM and ~12h.
 
@@ -533,9 +536,9 @@ ax2.set_yscale('log')
 plt.show()
 ```
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/fraud_time.png" alt="fraud time" class="center" style="width: 600px;">
-
+</p>
 
 
 ```python
@@ -547,9 +550,9 @@ plt.title("Correlation")
 plt.show()
 ```
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/corr.png" alt="fraud correlation" class="center" style="width: 600px;">
-
+</p>
 
 
 This article proposes an unsupervised approach to detect frauds, the only place the labels are used is to evaluate the algorithm. One of the biggest challenge of this problem is that the target is highly imbalanced as only 0.17% cases are fraudulent transactions. But the advantage of the representation learning approach is that it is still able to handle such imbalance nature of the problems. Using TSNE we can try to see how the transactions are similar:
@@ -587,9 +590,9 @@ ax.legend(loc='best')
 
 
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/tsne_base.png" alt="fraud base tsne" class="center" style="width: 600px;">
-
+</p>
 
 
 ```python
@@ -691,9 +694,9 @@ plt.ylabel('Number of samples')
     Text(0, 0.5, 'Number of samples')
 
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/rec_score_pca.png" alt="pca reconstruction score" class="center" style="width: 600px;">
-
+</p>
 
 
 ```python
@@ -805,9 +808,9 @@ ax.legend(loc='best')
 
 
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/tsne_pca.png" alt="pca fraud tsne" class="center" style="width: 600px;">
-
+</p>
 
 Now, we need to set a threshold to the reconstruction score. Usualy there domain expertise is used to help to set this threshold since it impacts direcly on the precision and recall trade-off.
 Using the mean and standard deviation of the reconstruction score we can set a reasonable threshold. Then, I choose to set the threshold to mean + 2*std. With this, auditing 0.74% of the transactions we managed to find 87% of the frauds.
@@ -816,8 +819,9 @@ Using the mean and standard deviation of the reconstruction score we can set a r
 
 An autoencoder is a type of artificial neural network used to learn efficient data codings in an unsupervised manner. It is composed of a enconding part responsable to compress the data and a decoder to reconstruct the data.
 
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/autoencoder.png" alt="autoencoder" class="center" style="width: 600px;">
-
+</p>
 
 ```python
 ss = StandardScaler()
@@ -899,9 +903,9 @@ plt.title('Training and validation loss')
 
 
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/loss_func.png" alt="autoencoder loss" class="center" style="width: 600px;">
-
+</p>
 
 
 ```python
@@ -982,9 +986,9 @@ plt.ylabel('Number of samples')
 
 
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/rec_score_autoencoder.png" alt="autoencoder reconstruction score" class="center" style="width: 600px;">
-
+</p>
 
 ## val eval
 
@@ -1072,9 +1076,9 @@ ax.legend(loc='best')
 
 
 
-
+<p align="center">
 <img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/tsne_autoencoder.png" alt="fraud autoencoder tsne" class="center" style="width: 600px;">
-
+</p>
 
 The Autoencoder representation seens to split quite well the frauds from the normal data. Now, we need to set a threshold to the reconstruction score. Usualy there domain expertise is used to help to set this threshold since it impacts direcly on the precision and recall trade-off.
 Using the mean and standard deviation of the reconstruction score we can set a reasonable threshold. Then, I choose to set the threshold to mean + 2*std. With this, auditing 0.85% of the transactions we managed to find 65% of the frauds.
