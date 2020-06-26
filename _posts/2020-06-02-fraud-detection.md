@@ -1,4 +1,5 @@
 ---
+title: Fraud detection - Unsupervised Anomaly Detection
 classes: wide
 date: 2020-06-02
 tags: [Unsupervised Learning, Anomaly Detetion]
