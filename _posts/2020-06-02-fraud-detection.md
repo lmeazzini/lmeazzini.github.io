@@ -5,12 +5,13 @@ tags: [Unsupervised Learning, Anomaly Detetion]
 excerpt: "Unsupervised Learning, Data Science, Anomaly Detetion]"
 mathjax: "true"
 header:
-  image: "/images/fraud-detection/card.jpeg"
 ---
 
 # Fraud detection - Unsupervised Anomaly Detection
 
 ### An 100% unsupervised approach to discover frauds on credit card transactions
+
+<img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/card.jepg" alt="learning supervision comparison" style="width: 800px;">
 
 One of the greatest concerns of many business owners is how to protect their company from fraudulent activity. This concern motivated large companies to save data relative to their past frauds, however whomever performs a fraud aims not to be caught then this kind of data usualy is unlabeled or partially labeled.
 
@@ -20,7 +21,7 @@ One of the most common approach to find fraudulent transactions was randomly sel
 
 Then, we aim to leverage machine learning to detect and prevent frauds and make fraud fighters more efficient and effective. Comumly, there are the supervised and the unsupervised approach:
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/table.jpg" alt="learning supervision comparison" style="width: 400px;">
+<img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/table.png" alt="learning supervision comparison" style="width: 400px;">
 
 Also, these models can then be deployed to automatically identify new instances/cases of known fraud patterns/types in the future. Ideally the validation of this type of machine learning algorith sometimes need to be a temporal validation since fraud patterns can change over time, however to simplify this article, the validation will be simplified.
 
