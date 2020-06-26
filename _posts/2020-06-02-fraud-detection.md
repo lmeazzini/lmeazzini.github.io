@@ -11,7 +11,9 @@ header:
 
 ### An 100% unsupervised approach to discover frauds on credit card transactions
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/card.jpeg" alt="credit card" margin-left: auto; margin-right: auto; style="width: 800px;">
+<p align="center">
+<img src="{{ site.url }}{{ site.baseurl }}/images/fraud-detection/card.jpeg" alt="credit card" style="width: 800px;">
+</p>
 
 One of the greatest concerns of many business owners is how to protect their company from fraudulent activity. This concern motivated large companies to save data relative to their past frauds, however whomever performs a fraud aims not to be caught then this kind of data usualy is unlabeled or partially labeled.
 
